@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+        <header></header>
+        <main>
+                <div class="container">
+                        <h2>1일 1로그 100일 완성 IT 지식</h2>
+                        <ul class="border">
+                                <li>No.</li>
+                                <li>Subject</li>
+                                <li>Date</li>
+                        </ul>
+                        </ul>
+                        <ul class="border border-contents ">
+                                <li>1.</li>
+                                <li>Subject</li>
+                                <li>2024-09-19</li>
+                        </ul>
+                        <ul class="border border-contents">
+                                <li>2.</li>
+                                <li>Subject</li>
+                                <li>2024-09-19</li>
+                        </ul>
+                        <ul class="border border-contents">
+                                <li>3.</li>
+                                <li>Subject</li>
+                                <li>2024-09-19</li>
+                        </ul>
+                        <ul class="border border-contents">
+                                <li>4.</li>
+                                <li>Subject</li>
+                                <li>2024-09-19</li>
+                        </ul>
+                        <ul class="border border-contents">
+                                <li>5.</li>
+                                <li>Subject</li>
+                                <li>2024-09-19</li>
+                        </ul>
+
+                </div>
+        </main>
+
+
+
+        <script>
+                var isOpen = false;
+                $('.border-contents li').on("click", function() {
+                       $('ul').removeClass('on')
+                        // 아코디언 메뉴가 열려있는 경우
+                        if (isOpen) {
+                                var parentUl = $(this).parent('ul');
+                                var newUl = $('<div class="data_page"></div>');                               
+                                // 이벤트가 일어난 li의 부모의 형제중에 .data_page란 클래스를 가지고 있는 경우 >> 현재 열려 있는 페이지이므로 그냥 닫고 false 값을 넣어줌
+                                // false일 경우 하단
+
+                                if(parentUl.next().hasClass('data_page')){
+                                        $('.data_page').remove();
+                                        isOpen = false;
+                                }
+                                else{
+                                        $('.data_page').remove();
+                                        parentUl.after(newUl);
+                                        parentUl.addClass('on')
+                                        isOpen = true;
+                                }                              
+                      
+                        
+                        }
+                        // 아코디언 메뉴가 닫혀있는 경우
+                        else {
+                                var parentUl = $(this).parent('ul');
+                                var newUl = $('<div class="data_page"></div>');
+                                parentUl.addClass('on')
+                                parentUl.after(newUl);
+                              
+                                isOpen = true;
+                        }
+
+                });
+        </script>
+</body>
+
+</html>
